@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Comparision()
+        {
+            var n1=Number(document.getElementById("txt1").value);
+            var n2=Number(document.getElementById("txt2").value);
+            if(n1>n2)
+            {
+                document.getElementById("dv").innerHTML="<h1>"+n1+"is greater</h1>";
+            }
+            else if(n1==n2)
+            {
+                document.getElementById("dv").innerHTML="<h1>Both are Equal</h1>";
+            }
+            else
+            {
+                document.getElementById("dv").innerHTML="<h1>"+n2+"is greater</h1>";
+            }
+        }
+    </script>
+</head>
+<body>
+    Num1<input type="text" id="txt1"/><br/><br/>
+    Num2<input type="text" id="txt2"/><br/><br/>
+    <input type="button" value="Check" onclick="Comparision()"/>
+    <hr/>
+    <div id="dv"></div>
+</body>
+</html>

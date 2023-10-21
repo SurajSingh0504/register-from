@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var state=[] ;
+        function Addstate()
+        {
+            var s=document.getElementById("txtstate").value;
+
+            state.push(s);
+            alert("State Added Successfully!!");
+            document.getElementById("txtstate").value="";
+            Display();
+        }
+        function Display()
+        {
+            var data=" ";
+            for(i=0;i<state.length;i++)
+            {
+                data=data+"<li>"+state[i]+"</li>";
+            }
+            document.getElementById("mystate").innerHTML=data;
+        }
+    </script>
+</head>
+<body>
+    Enter State:<input type="text" id="txtstate"/><br/><br/>
+    <input type="button" value="Add" onclick="Addstate()"/>
+    <hr/>
+    <ul id="mystate"></ul>
+</body>
+</html>

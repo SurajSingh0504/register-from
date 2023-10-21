@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var State=[];
+        function AddState()
+        {
+            var s=document.getElementById("a").value;
+            var i=State.indexOf(s.toUpperCase());
+            if(i==-1)
+            {
+                State.push(s.toUpperCase());
+                alert("State Added Successfully");
+                document.getElementById("a").value="";
+                Display();
+            }
+            else
+            {
+                document.getElementById("a").value="";
+                alert("State Already Exist");
+            }
+        };
+        function Display()
+        {
+            var data="";
+            for(i=0;i<State.length;i++)
+            {
+                data=data+"<li>"+State[i]+"<input type='button' value='x' onclick='Delete("+i+")'/>"+"</li>";
+            }
+            document.getElementById("1").innerHTML=data;
+        }
+        function Delete(d)
+        {
+            State.splice(d,1);
+            alert("City deleted successfully");
+            Display();
+        }
+    </script>
+</head>
+<body>
+    Enter State:<input type="text" id="a"/><br/><br/>
+    <input type="button" value="Add" onclick="AddState()";/>
+    <hr/>
+    <ul id="1" ></ul>
+
+</body>
+</html>

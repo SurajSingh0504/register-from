@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<style>
+    input{
+border:2px solid black;
+height:70px;
+width: 70px;
+    }
+
+    .aa{
+        height:80px;
+width:300px;
+    }
+
+   
+</style>    
+    <script>
+        function Display(val)
+        {
+           document.getElementById('result').value += val;
+           return val;
+
+
+        }
+        function Solve()
+        {
+            let x=document.getElementById('result').value;
+            let y=eval(x);
+            document.getElementById('result').value=y;
+
+            return y;
+        }
+
+        function clearScreen(){
+            document.getElementById('result').value=" ";
+        }
+
+    </script>
+</head>
+<body>
+    <div class="panel" style="margin-left:200px; margin-top:100px; background-color: black;height:700px;width:700px; ">
+
+    <div style="margin-left:150px; margin-top:50px;">
+    <input type="text"   class="aa" id="result"/><br/><br>
+    <input type="button" value="7" onclick="Display('7')"/>
+    <input type="button" value="8" onclick="Display('8')"/>
+
+    <input type="button" value="9" onclick="Display('9')"/>
+
+    <input type="button" value="+" onclick="Display('+')"/><br/><br>
+
+    <input type="button" value="4" onclick="Display('4')"/>
+
+    <input type="button" value="5" onclick="Display('5')"/>
+
+    <input type="button" value="6" onclick="Display('6')"/>
+    <input type="button" value="-" onclick="Display('-')"/><br/><br>
+    <input type="button" value="1" onclick="Display('1')"/>
+    <input type="button" value="2" onclick="Display('2')"/>
+    <input type="button" value="3" onclick="Display('3')"/>
+    <input type="button" value="*" onclick="Display('*')"/><br/><br>
+    <input type="button" value="/" onclick="Display('/')"/>
+    <input type="button" value="=" onclick="Solve()"/>
+    <input type="button" value="Clear" onclick="clearScreen()"/>
+    <input type="button" value="." onclick="Display('.')"/>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

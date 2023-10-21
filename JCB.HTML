@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stysheet"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="JCB.JS"></script>
+</head>
+<body>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Construction</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Start Time:</label><br/>
+                    <input type="time" id="st"><br/> 
+                </div>
+                <div class="form-group">
+                    <label>End Time:</label><br/>
+                    <input type="time" id="et"><br/> 
+                </div>
+                <div class="form-group">
+                    <label>Rest Time(min)</label><br/>
+                    <input type="text" id="r" onchange="Calculate()"><br/> 
+                </div>
+                <div class="form-group">
+                    <label>Rate/Hour</label><br/>
+                    <input type="text" id="rt" onchange="Calculate()"><br/> 
+                </div>
+                <div class="form-group">
+                    <label>Total</label><br/>
+                    <input type="time" id="tot" onchange="Calculate()"><br/> 
+                </div>
+                <div class="form-group">
+                    <label>Total Amount</label><br/>
+                    <input type="text" id="ta" onchange="Calculate()"><br/> 
+                </div>
+            </div>
+            <div class="panel-footer">
+            <button class="btn btn-success" onclick="Calculate()">Calculate</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2>Table</h2>
+            </div>
+    <table class="table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Rest Time(min)</th>
+            <th>Rate/Hour</th>
+            <th>Total</th>
+            <th>Total Amount</th>
+        </tr>
+        </thead>
+    </div>
+        <tbody id="d"></tbody>
+    </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Display()
+        {
+            var s=Number(document.getElementById("txtstart").value);
+            var e=Number(document.getElementById("txtend").value);
+            var i;
+            var data=" ";
+            for(i=s;i<=e;i++)
+            {
+                data=data+"<h1>"+i+"</h1>";
+            }
+            document.getElementById("dv").innerHTML=data;
+        };
+    </script>
+</head>
+<body>
+    Start<input type="text" id="txtstart"/><br/><br/>
+    End<input type="text" id="txtend"/><br/><br/>
+    <input type="button" value="Check" onclick="Display()"/>
+    <hr/>
+    <div id="dv"></div>
+</body>
+</html>

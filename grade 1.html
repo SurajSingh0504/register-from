@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Calculate()
+        {
+            var r=Number(document.getElementById("txt1").value);
+            var n=(document.getElementById("txt2").value);
+            var e=Number(document.getElementById("txt3").value);
+            var m=Number(document.getElementById("txt4").value);
+            var s=Number(document.getElementById("txt5").value);    
+            var t=e+m+s;
+            var p=(t/3).toFixed(2);
+            var g=" ";
+            var data=" ";
+            if((p<=100)&&(p>80))
+            {
+                g="Excellent";
+            }
+            else if((p<=80)&&(p>60))
+            {
+                g="Destinction";
+            }
+            else if((p<=60)&&(p>40))
+            {
+                g="Average";
+            }
+            else if(p>35)
+            {
+                g="Pass";
+            }
+            else
+            {
+                g="Fail";
+            }
+            data=data+"<h1>Roll No="+r+"</h1>";
+            data=data+"<h1>Name="+n+"</h1>";
+            data=data+"<h1>English="+e+"</h1>";          
+            data=data+"<h1>Math="+m+"</h1>";         
+            data=data+"<h1>Science="+s+"</h1>";      
+            data=data+"<h1>Total="+t+"</h1>";
+            data=data+"<h1>Percentage="+p+"</h1>";      
+            data=data+"<h1>Grade="+g+"</h1>";
+            document.getElementById("dv").innerHTML=data;
+        }
+    </script>
+</head>
+<body>
+    Roll No<input type="text" id="txt1"/><br/><br/>
+    Name<input type="text" id="txt2"/><br/><br/>
+    English<input type="text" id="txt3"/><br/><br/>
+    Math<input type="text" id="txt4"/><br/><br/>
+    Science<input type="text" id="txt5"/><br/><br/>
+    <input type="button" value="Calculate" onclick="Calculate()"/>
+    <hr/>
+    <div id="dv"></div>
+</body>
+</html>

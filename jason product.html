@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Submit()
+        {
+            var i=Number(document.getElementById("txt1").value);
+            var n=(document.getElementById("txt2").value);
+            var p=Number(document.getElementById("txt3").value);
+            var q=Number(document.getElementById("txt4").value);
+            var t=p*q;
+            var data=" ";
+            data=data+"<h1>Product Id="+i+"</h1>";
+            data=data+"<h1>Product Name="+n+"</h1>";
+            data=data+"<h1>Price="+p+"</h1>";
+            data=data+"<h1>Quantity="+q+"</h1>";
+            data=data+"<h1 style='color:green'>Total Amount="+t+"</h1>";
+            document.getElementById("dv").innerHTML=data;
+        
+        }
+    </script>
+</head>
+<body>
+    Product Id<input type="text" id="txt1"/><br/><br/>
+    Product Name<input type="text" id="txt2"/><br/><br/>
+    Price<input type="text" id="txt3"/><br/><br/>
+    Quantity<input type="text" id="txt4"/><br/><br/>
+    <input type="button" value="Submit" onclick="Submit()"/>
+    <hr/>
+    <div id="dv"></div>
+</body>
+</html>

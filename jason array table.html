@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var Student=[
+            {
+                "rno":1,"Name":"Suraj","English":45,"Maths":85,"Science":96
+            },
+            {
+                "rno":2,"Name":"Chaitanya","English":70,"Maths":50,"Science":36
+            },
+            {
+                "rno":3,"Name":"Gaurav","English":66,"Maths":85,"Science":86
+            },
+            {
+                "rno":4,"Name":"Datta","English":43,"Maths":80,"Science":90
+            },
+            {
+                "rno":5,"Name":"Akshay","English":99,"Maths":99,"Science":99
+            },
+    ];
+    function Display()
+    {
+        var i;
+        var data=" ";
+        for(i=0;i<Student.length;i++)
+        {
+            var total=Number(Student[i].English)+Number(Student[i].Maths)+Number(Student[i].Science);
+            var per=(total/3).toFixed(2);
+            var g=" ";
+            var col=" ";
+            if(per>35)
+            {
+                g="pass";
+                col="green";
+            }
+            else
+            {
+                g="fail";
+                col="red";
+            }
+            data=data+"<tr><td>"+Student[i].rno+"</td><td>"+Student[i].Name+"</td><td>"+Student[i].English+
+            "</td><td>"+Student[i].Maths+"</td><td>"+Student[i].Science+"</td><td>"+total+"</td><td>"+per+"</td><td>"+g+"</td></tr>"
+        }
+        document.getElementById("tbldata").innerHTML=data;
+    }
+    </script>
+</head>
+<body onload="Display()">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>name</th>
+                <th>English</th>
+                <th>Maths</th>
+                <th>Science</th>
+                <th>Total</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody id="tbldata"></tbody>
+    </table>
+    
+</body>
+</html>

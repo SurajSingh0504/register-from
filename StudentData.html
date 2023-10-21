@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         function Calculate()
+         {
+            var r=Number(document.getElementById("a").value);
+            var n=(document.getElementById("b").value);
+            var e=Number(document.getElementById("c").value);
+            var m=Number(document.getElementById("d").value);
+            var s=Number(document.getElementById("e").value);
+            var t=e+m+s;
+            var p=t/3;
+            document.getElementById("dv1").innerHTML="<h1>Roll No="+r+"</h1>";
+            document.getElementById("dv2").innerHTML="<h1>Name="+n+"</h1>";
+            document.getElementById("dv3").innerHTML="<h1>Eng="+e+"</h1>";
+            document.getElementById("dv4").innerHTML="<h1>Math="+m+"</h1>";
+            document.getElementById("dv5").innerHTML="<h1>Sci="+s+"</h1>";
+            document.getElementById("dv6").innerHTML="<h1>Total="+t+"</h1>";
+            document.getElementById("dv7").innerHTML="<h1>Percentage="+p+"</h1>";
+         }
+    </script>
+</head>
+<body>
+    Roll No<input type="text" id="a"/><br/><br/>
+    Name<input type="text" id="b"/><br/><br/>
+    Eng<input type="text" id="c"/><br/><br/>
+    Math<input type="text" id="d"/><br/><br/>
+    Sci<input type="text" id="e"/><br/><br/>
+    <input type="button" value="Calculate" onclick="Calculate()"/><hr/>
+    <div id="dv1"></div>
+    <div id="dv2"></div>
+    <div id="dv3"></div>
+    <div id="dv4"></div>
+    <div id="dv5"></div>
+    <div id="dv6"></div>
+    <div id="dv7"></div>
+
+</body>
+</html>

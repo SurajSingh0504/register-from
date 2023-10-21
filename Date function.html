@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Display()
+        {
+            var dt=new Date();
+            document.getElementById("dv1").innerHTML=dt.toString();
+            document.getElementById("dv2").innerHTML=dt.toDateString();
+            document.getElementById("dv3").innerHTML=dt.toTimeString();
+            document.getElementById("dv4").innerHTML=dt.toLocaleDateString();
+            document.getElementById("dv5").innerHTML=dt.toLocaleTimeString();
+            document.getElementById("dv6").innerHTML=dt.getFullYear();
+            document.getElementById("dv7").innerHTML=(dt.getMonth())+1;
+            document.getElementById("dv8").innerHTML=dt.getHours();
+            document.getElementById("dv9").innerHTML=dt.getSeconds();
+
+        }
+    </script>
+</head>
+<body onload="Display()">
+    <h1 id="dv1"></h1>
+    <h1 id="dv2"></h1>
+    <h1 id="dv3"></h1>
+    <h1 id="dv4"></h1>
+    <h1 id="dv5"></h1>
+    <h1 id="dv6"></h1>
+    <h1 id="dv7"></h1>
+    <h1 id="dv8"></h1>
+    <h1 id="dv9"></h1>
+</body>
+</html>

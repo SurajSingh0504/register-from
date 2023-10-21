@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        var Product=[];
+        var index=-1;
+        var Stock=200;
+        function calculate()
+        {
+            var p=document.getElementById("p").value;
+            var q=document.getElementById("q").value;
+            var Total=p*q;
+            Stock-=Number(q);
+            document.getElementById("t").value=Total;
+            document.getElementById("as").value=Stock;
+        }
+        function Add()
+        {
+            var i=document.getElementById("i").value;
+            var n=document.getElementById("pn").value;
+            var p=Number(document.getElementById("p").value);   
+            var q=Number(document.getElementById("q").value);
+            var t=Number(document.getElementById("t").value);
+            var s=Number(document.getElementById("as").value);
+            var st={"Product_Id":i,"Product_Name":n,"Price":p,"Quantity":q,"Toatl":t,"Stock":s};
+            Product.push(st);
+            alert("Added successfully");
+            Clear();
+            Display();
+        };
+        function Update() {
+    var i = document.getElementById("i").value;
+    var n = document.getElementById("pn").value;
+    var p = Number(document.getElementById("p").value);
+    var q = Number(document.getElementById("q").value);
+    var st = {
+        "Product_Id": i,
+        "Product_Name": n,
+        "Price": p,
+        "Quantity": q
+    };
+    Product[index] = st; // Corrected the variable name "product" to "Product"
+    alert("Updated successfully");
+    Clear();
+    Display();
+}
+        function Clear()
+        {
+            document.getElementById("i").value=" ";
+            document.getElementById("pn").value=" ";
+            document.getElementById("p").value=" ";
+            document.getElementById("q").value=" ";
+            document.getElementById("t").value=" ";
+            document.getElementById("as").value=" ";
+        };
+           function ViewProduct(a)
+           {
+            index =a
+            var st=Product[index];
+            document.getElementById("i").value=st.Product_Id;
+            document.getElementById("pn").value=st.Product_Name;
+            document.getElementById("p").value=st.Price;
+            document.getElementById("q").value=st.Quantity;
+            document.getElementById("t").value=st.Toatl;
+            document.getElementById("as").value=st.Stock;
+           };
+           function DeleteProduct(p)
+            {
+              product.splice(p,1);
+              alert("Deleted successfuly");
+              Display();
+            };
+            function Display()
+            {
+                var i;
+                var data=" ";
+                Stock=200
+                GrandToatal=0;
+                for(i=0;i<Product.length;i++)
+                {
+                    var d=Product[i];
+                    Stock=Stock-Number(d.Quantity);
+                    if (Stock<0)
+                    {
+                        alert("Stock is not Availble");
+                    }
+                    var Total=Number(d.Price)*Number(d.Quantity);
+                  var  GrandTotal=Number(GrandTotal)+Number(Total);
+                data=data+"<tr><td>"+d.Product_Id+"</td><td>"+d.Product_Name+"</td><td>"+d.Price+"</td><td>"+d.Quantity+"</td><td>"
+                +Total+"</td><td>"+Stock+"</td><td>"+"<input type='button' value='View' onclick='ViewProduct("+i+")'/>"+"</td><td>"+
+                "<input type='button' value='x' onclick='DeleteProduct("+i+")'/>"+"</td></tr>";
+            }
+                document.getElementById("tbldata").innerHTML=data;
+                document.getElementById("gd").innerHTML=GrandToatal;
+            };
+
+            function Filterdata()
+            {
+                var fd=document.getElementById("txtfilter").value;
+                var i;
+                var data=" ";
+                Stock=200
+                GrandToatal=0;
+                for(i=0;i<Product.length;i++)
+                {
+                    var d=Product[i];
+                    Stock=Stock-Number(d.Quantity)
+                    if(Stock<0){
+                        alert("Sctock is not Availble");
+                    }
+                    var Total=Number(d.price)*Number(d.Quantity);
+                    GrandToatal=Number(GrandToatal)+Number(Total);
+                    if(d.Product_Name.toLowerCase().includes()(fd.toLowerCase()))
+                    {
+                        data=data="</tr>td>"+"</td><td>"+d.Product_Id+"</td><td>"+d.Product_Name+"</td><td>"+d.price+"</td><td>"+d.Quantity+"</td><td>"
+                        +Total+"</td><td>"+Stock+"</td><td>"+"<input type='button' value='View' onclick='ViewProduct("+i+")'/>"+"</td><td>"+
+                        "<input type='button' value='x' onclick='DeleteProduct(+i+i)'/>"+"</td></tr>";        
+                    }
+                    document.getElementById("tbldata").innerHTML=data;
+                    document.getElementById("gd").innerHTML=GrandToatal;
+                }
+            }
+           
+    </script>
+    
+</head>
+<body>
+    <div class="col-md-6">
+        <div class="paneln panel-success">
+            <div class="panel-heading">
+                <h2>STORE INFORMATION</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>PROPDUCT ID </label><br>
+                    <input type="text" id="i" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Product Name</label><br>
+                    <input type="text" id="pn" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Price</label><br>
+                    <input type="text" id="p" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label><br>
+                    <input type="text" id="q" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Total</label><br>
+                    <input type="text" id="t" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Availble stock</label><br>
+                    <input type="text" id="as" onchange="calculate()" class="form-control">
+                </div>
+            </div>
+                <div class="panel-footer"><br>
+                   <button class="btn btn-success" onclick="Add()">Add</button>
+                   <button class="btn btn-info" onclick="Update()">Update</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2>Tabel</h2>
+                </div>
+                <table class="table tabel table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product Id</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quanitity</th>
+                            <th>Total</th>
+                            <th>Availble Stock</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <div>
+                        <tbody id="tbldata"></tbody>
+                     <tfoot>
+                        <tr>
+                            <td colspan="4">GrandTotal</td>
+                            <td  id="gd"></td>
+                        </tr>
+                     </tfoot>
+                    </div>
+                </table>
+            </div>
+        </div>
+    
+    
+</body>
+</html>

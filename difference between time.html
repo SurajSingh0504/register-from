@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Calculate()
+        {
+            var st=document.getElementById("txtstart").value;
+            var et=document.getElementById("txtend").value;
+            var rt=Number(document.getElementById("rest").value);
+            var stt=new Date("08 26 2023 "+st);
+            var ett=new Date("08 26 2023 "+et);
+            var time=(ett-stt)/1000/60;
+            var tt=time-rt;
+            var h=Math.floor(time/60);
+            var m=(time%60);
+            document.getElementById("dv").innerHTML="<h1>Total Duration"+h+":"+m+"</h1>";
+            document.getElementById("dv1").innerHTML="<h1>Total Time="+tt+"</h1>";
+        }
+    </script>
+</head>
+<body>
+    Start Time<input type="time" id="txtstart"/><br/><br/>
+    End Time<input type="time" id="txtend"/><br/><br/>
+    Rest Time(min)<input type="text" id="rest"/><br/><br/> 
+    <input type="button" value="Calculate" onclick="Calculate()"/>
+    <hr/>
+    <div id="dv"></div>
+    <div id="dv1"></div>
+</body>
+</html>

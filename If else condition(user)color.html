@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Calculate()
+        {
+            var n=Number(document.getElementById("txt1").value);
+            if(n%2==0)
+            {
+               document.getElementById("dv1").innerHTML="even"
+            }
+            else
+            {
+                document.getElementById("dv1").innerHTML="<h1 style='color:red'>Odd No</h1>";
+            }
+        }
+    </script>
+</head>
+<body>
+    Num<input type="text" id="txt1"/><br/><br/>
+    <input type="button" value="Check" onclick="Calculate()"/>
+    <hr/>
+    <div id="dv1"></div>
+</body>
+</html>

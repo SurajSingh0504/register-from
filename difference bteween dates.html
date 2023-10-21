@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Calculate()
+        {
+            var sd=document.getElementById("txtstart").value;
+            var ed=document.getElementById("txtend").value;
+            var sdt=new Date(sd);
+            var edt=new Date(ed);
+            var time=(edt-sdt)/1000/60/60/24;
+            document.getElementById("dv").innerHTML=time;
+        }
+    </script>
+</head>
+<body>
+    Start Date<input type="date" id="txtstart"/><br/><br/>
+    End date<input type="date" id="txtend"/><br/><br/>
+    <input type="button" value="Calculate" onclick="Calculate()"/>
+    <hr/>
+    <div id="dv"></div>
+</body>
+</html>

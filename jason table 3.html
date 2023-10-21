@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var Product=[];
+        var index=-1;
+        var Stock=200;
+        function Add()
+        {
+            var i=Number(document.getElementById("a").value);
+            var n=document.getElementById("b").value;
+            var p=Number(document.getElementById("c").value);
+            var q=Number(document.getElementById("d").value);
+            var st={"Product_Id":i,"Product_Name":n,"Price":p,"Quantity":q};
+            Product.push(st);
+            Stock -= Number(q);
+            alert("Added Successfully");
+            Clear();
+            Display();
+        }
+        function Clear()
+        {
+            document.getElementById("a").value=" ";
+            document.getElementById("b").value=" ";
+            document.getElementById("c").value=" ";
+            document.getElementById("d").value=" ";
+        }
+        function Update(d)
+        {
+            var i=Number(document.getElementById("a").value);
+            var n=document.getElementById("b").value;
+            var p=Number(document.getElementById("c").value);
+            var q=Number(document.getElementById("d").value);
+            var st={"Product_Id":i,"Product_Name":n,"Price":p,"Quantity":q};
+            Product[index]=st;
+            alert("Updated Successfully");
+            Clear();
+            Display();
+        }
+        function Display()
+        {
+            var i;
+            var data=" ";
+            var Stock=200;
+            for(i=0;i<Product.length;i++)
+            {
+                var d=Product[i];
+                var Stock=Stock-Number(d.Quantity);
+                var Total=Number(d.Price)*Number(d.Quantity);
+                data=data+"<tr><td>"+d.Product_Id+"</td><td>"+d.Product_Name+"</td><td>"+d.Price+"</td><td>"+d.Quantity+"</td><td>"
+                +Total+"</td><td>"+Stock+"</td><td>"+"<input type='button' value='View' onclick='ViewProduct("+i+")'/>"+"</td><td>"+
+                "<input type='button' value='x' onclick='DeleteProduct("+i+")'/>"+"</td></tr>" 
+            }
+            document.getElementById("tbldata").innerHTML=data;
+        }
+        function ViewProduct(d)
+        {
+            index =d;
+            var st=Product[index];
+            document.getElementById("a").value=st.Product_Id;
+            document.getElementById("b").value=st.Product_Name;
+            document.getElementById("c").value=st.Price;
+            document.getElementById("d").value=st.Quantity;
+        }
+        function DeleteProduct(p)
+        {
+            Product.splice(p,1);
+            alert("deleted successfully");
+            Display();
+        }
+    </script>
+</head>
+<body>
+  <table>
+    <tr>
+        <td>Product Id</td>
+        <td><input type="text" id="a"/></td>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td><input type="text" id="b"/></td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td><input type="text" id="c"/></td>
+    </tr>
+    <tr>
+        <td>Quantity</td>
+        <td><input type="text" id="d"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Add" onclick="Add()"/></td>
+        <td><input type="button" value="Update" onclick="Update()"/></td>
+    </tr>
+  </table> 
+  <hr/>
+  <table border="'1">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Available Stock</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbldata"></tbody>
+  </table> 
+</body>
+</html>

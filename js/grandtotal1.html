@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <div class="color">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2>Stotre Information</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Product_Id</label><br>
+                    <input type="text" id="i" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Product_Name</label>
+                    <input type="text" id="n" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" id="p" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Quanitity</label>
+                    <input type="text" id="q" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Total</label>
+                    <input type="text" id="t" onchange="calculate()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Available_Stock</label>
+                    <input type="text" id="av" onclick="calculate()" class="form-control">
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success" onclick="Add()">Add</button>
+                <button class="btn btn-info" onclick="Update()">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2>Tabel</h2>
+            </div>
+            <table class=" tabel table-borderd table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Product_Id</th>
+                        <th>Product_Name</th>
+                        <th>Price</th>
+                        <th>Quanitity</th>
+                        <th>Total</th>
+                        <th>Available_Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbldata"></tbody>
+                 <tfoot>
+                    <tr>
+                        <td colspan="4">GrandToatal</td>
+                        <td id="gdS"></td>
+                    </tr>
+                 </tfoot>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

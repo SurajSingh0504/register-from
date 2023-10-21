@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var Student=[];
+        var index=-1;
+        function Calculate()
+        {
+            var r=document.getElementById("txtrno").value;
+            var n=document.getElementById("txtname").value;
+            var e=Number(document.getElementById("txteng").value);
+            var m=Number(document.getElementById("txtmat").value);
+            var s=Number(document.getElementById("txtsci").value);
+            var st={"roll_no":r,"name":n,"english":e,"maths":m,"science":s};
+            Student.push(st);
+            alert("added successfully");
+            clear();
+            Display();
+        };
+        function Update()
+        {
+            var r=document.getElementById("txtrno").value;
+            var n=document.getElementById("txtname").value;
+            var e=Number(document.getElementById("txteng").value);
+            var m=Number(document.getElementById("txtmat").value);
+            var s=Number(document.getElementById("txtsci").value);
+            var st={"roll_no":r,"name":n,"english":e,"maths":m,"science":s};
+           Student[index]=st;
+            alert("updated successfully");
+            clear();
+            Display();
+        };
+        function clear()
+        {
+            document.getElementById("txtrno").value=" ";
+            document.getElementById("txtname").value=" ";
+            document.getElementById("txteng").value=" ";
+            document.getElementById("txtmat").value=" ";
+            document.getElementById("txtsci").value=" ";
+        };
+        function Display()
+        {
+            var i;
+            var data=" ";
+            for(i=0;i<Student.length;i++)
+            {
+                var d=Student[i];
+                var total=Number(d.english)+Number(d.maths)+Number(d.science);
+                var per=(total/3).toFixed(2);
+                var g=" ";
+                GrandTotal=0;
+                if(per>35)
+                {
+                    g="Pass";
+                }
+                else
+                {
+                    g="fail";
+                }
+                data=data+"<tr><td>"+d.roll_no+"</td><td>"+d.name+"</td><td>"+d.english+"</td><td>"+d.maths+"</td><td>"+d.science+"</td><td>"
+                +total+"</td><td>"+per+"</td><td>"+g+"</td><td>"+"<input type='button' value='x' onclick='DeleteStudent("+i+")'/>"+"<input type='button' value='View' onclick='ViewStudent("+i+")'/>"+"</td></tr>"
+            }
+            document.getElementById("tbldata").innerHTML=data;
+            document.getElementById("gd").innerHTML=GrandTotal;
+        };
+        function DeleteStudent(p)
+        {
+           Student.splice(p,1);
+            alert("deleted successfully");
+            Display();
+        };
+        function ViewStudent(d)
+        {
+            index=d;
+            var st=Student[index];
+            document.getElementById("txtrno").value=st.roll_no;
+            document.getElementById("txtname").value=st.name;
+            document.getElementById("txteng").value=st.english;
+            document.getElementById("txtmat").value=st.maths;
+            document.getElementById("txtsci").value=st.science;
+        };
+        function Filterdata()
+        {
+            var fd=document.getElementById("txtfilter").value;
+            var i;
+            var data=" ";
+            for(i=0;i<Student.length;i++)
+            {
+                var d=Student[i];
+                var total=Number(d.english)+Number(d.maths)+Number(d.science);
+                var per=(total/3).toFixed(2);
+                var g=" ";
+                GrandTotal=0;
+                if(per>35)
+                {
+                    g="Pass";
+                }
+                else
+                {
+                    g="fail";
+                }
+                GrandTotal=Number(GrandTotal)+Number(total);
+               if(d.roll_no.toLowerCase().includes(fd.toLowerCase()))
+               {
+                data=data+"<tr><td>"+d.roll_no+"</td><td>"+d.name+"</td><td>"+d.english+"</td><td>"+d.maths+"</td><td>"+d.science+"</td><td>"
+                +total+"</td><td>"+per+"</td><td>"+g+"</td><td>"+"<input type='button' value='x' onclick='DeleteStudent("+i+")'/>"+
+                "<input type='button' value='View' onclick='ViewStudent("+i+")'/>"+"</td></tr>"
+               }
+            }
+            document.getElementById("tbldata").innerHTML=data;
+            document.getElementById("gd").innerHTML=GrandTotal;
+
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Roll No</td>
+            <td><input type="text" id="txtrno"/></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id="txtname"/></td>
+        </tr>
+        <tr>
+            <td>English</td>
+            <td><input type="text" id="txteng"/></td>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td><input type="text" id="txtmat"/></td>
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td><input type="text" id="txtsci"/></td>
+        </tr>
+        <tr>
+           <td><input type="button" value="Add" onclick="Calculate()"/></td>
+           <td><input type="button" value="Update" onclick="Update()"/></td>
+        </tr>
+        </table>
+        <hr/>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Student Name<br/><input type="text" id="txtfilter" onkeyup="Filterdata()" placeholder="Search By Name"/></th>
+                    <th>Eng</th>
+                    <th>Math</th>
+                    <th>Science</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbldata"></tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5">GrandTotal</th>
+                    <th id="gd"></th>
+                </tr>
+            </tfoot>
+        </table>
+</body>
+</html>
